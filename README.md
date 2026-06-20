@@ -1,6 +1,6 @@
          
 # seed-sync-binaries
-
+![SEED Sync Header Image](seed-header.png)
 Public **release artifacts** for **S.E.E.D. (Seed Sync)** — the Linux tarball and
 the Windows installer. This repo holds binaries only; the source lives in the
 source repo.
