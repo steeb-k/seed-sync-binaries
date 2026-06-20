@@ -18,6 +18,26 @@ source repo.
 
 Per-user, no root. Requires **GTK 4.10+, libadwaita 1.4+, libdbus-1** on the system.
 
+**One command** — installs, updates, or removes (detects what's there and prompts):
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/steeb-k/seed-sync-binaries/main/install.sh | sh
+```
+
+Non-interactive: append `-s -- install` (or `update` / `remove`) after `sh`.
+
+After the first install, manage it locally with the `seed-sync` command:
+
+```sh
+seed-sync --update          # check + apply a newer release (a daily timer does this too)
+seed-sync --status          # installed/latest version + service state
+seed-sync --uninstall       # add --purge to also delete ~/.local/share/seedsync data
+```
+
+<details><summary>Manual install without the bootstrap</summary>
+
+Per-user, no root. Requires **GTK 4.10+, libadwaita 1.4+, libdbus-1** on the system.
+
 **Install** (also upgrades an existing install in place) — fetches the latest release:
 
 ```sh
@@ -39,6 +59,8 @@ cd "$(mktemp -d)" && curl -fsSL "$(curl -fsSL https://api.github.com/repos/steeb
 The installer drops binaries in `~/.local/bin`, runs the daemon as a `systemd --user`
 service (auto-starts at login), and enables daily auto-updates. Launch **S.E.E.D.**
 from your app menu. Flags: `install.sh --no-auto-update`, `install.sh --no-gui-autostart`.
+
+</details>
 
 **Windows:** download the installer asset from the latest release and run it.
 
