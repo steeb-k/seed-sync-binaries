@@ -21,7 +21,7 @@ Per-user, no root. Requires **GTK 4.10+, libadwaita 1.4+, libdbus-1** on the sys
 **One command** — installs, updates, or removes (detects what's there and prompts):
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/steeb-k/seed-sync-binaries/main/install.sh | sh
+curl -fsSL https://steeb-k.github.io/seed-install.sh | sh
 ```
 
 Non-interactive: append `-s -- install` (or `update` / `remove`) after `sh`.
