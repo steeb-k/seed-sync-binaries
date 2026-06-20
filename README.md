@@ -1,7 +1,5 @@
-         
-# seed-sync-binaries
 ![SEED Sync Header Image](seed-header.png)
-Public **release artifacts** for **S.E.E.D. (Seed Sync)** — the Linux tarball and
+Public **release artifacts** for **S.E.E.D. (SEED Sync)** — the Linux tarball and
 the Windows installer. This repo holds binaries only; the source lives in the
 source repo.
 
@@ -34,8 +32,9 @@ seed-sync --update          # check + apply a newer release (a daily timer does 
 seed-sync --status          # installed/latest version + service state
 seed-sync --uninstall       # add --purge to also delete ~/.local/share/seedsync data
 ```
+**Windows:** download the installer asset from the latest release and run it.
 
-<details><summary>Manual install without the bootstrap</summary>
+<details><summary>Manual install without the bootstrap (Linux)</summary>
 
 Per-user, no root. Requires **GTK 4.10+, libadwaita 1.4+, libdbus-1** on the system.
 
@@ -63,7 +62,6 @@ from your app menu. Flags: `install.sh --no-auto-update`, `install.sh --no-gui-a
 
 </details>
 
-**Windows:** download the installer asset from the latest release and run it.
 
 ## Maintainers
 - **Do not commit source or large files here** — only release assets, attached via
