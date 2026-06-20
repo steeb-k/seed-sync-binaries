@@ -14,10 +14,33 @@ source repo.
   authentication. Publishing *to* this repo requires a token (`SEED_BINARIES_TOKEN`,
   stored as a secret in source repo); downloading does not.
 
-## Installing / updating
-See the latest release's assets, or the install instructions in `seed-sync-gtk`
-(`README.md` / `docs/linux-packaging.md`). On Linux the daily `seed-sync-update`
-timer keeps installs current automatically.
+## Install / update / uninstall (Linux)
+
+Per-user, no root. Requires **GTK 4.10+, libadwaita 1.4+, libdbus-1** on the system.
+
+**Install** (also upgrades an existing install in place) — fetches the latest release:
+
+```sh
+cd "$(mktemp -d)" && curl -fsSL "$(curl -fsSL https://api.github.com/repos/steeb-k/seed-sync-binaries/releases/latest | grep -oE 'https://[^"]+linux-x86_64\.tar\.gz' | head -1)" | tar xz && seed-sync-*/install.sh
+```
+
+**Update** an existing install (a daily `systemd --user` timer already does this for you):
+
+```sh
+seed-sync-update            # add --check to only report, don't change anything
+```
+
+**Uninstall** (add `--purge` to also delete `~/.local/share/seedsync` data):
+
+```sh
+cd "$(mktemp -d)" && curl -fsSL "$(curl -fsSL https://api.github.com/repos/steeb-k/seed-sync-binaries/releases/latest | grep -oE 'https://[^"]+linux-x86_64\.tar\.gz' | head -1)" | tar xz && seed-sync-*/uninstall.sh
+```
+
+The installer drops binaries in `~/.local/bin`, runs the daemon as a `systemd --user`
+service (auto-starts at login), and enables daily auto-updates. Launch **S.E.E.D.**
+from your app menu. Flags: `install.sh --no-auto-update`, `install.sh --no-gui-autostart`.
+
+**Windows:** download the installer asset from the latest release and run it.
 
 ## Maintainers
 - **Do not commit source or large files here** — only release assets, attached via
