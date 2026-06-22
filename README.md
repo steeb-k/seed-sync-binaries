@@ -28,7 +28,9 @@ seed-sync --uninstall       # add --purge to also delete your app data
 
 ## Other Requirements
 ### Windows
-Requires **Windows 10 (64-bit)** or later.
+Requires **Windows 10 (64-bit)** or later. 
+
+**Windows 11 ARM** *may* be supported via emulation but has not been tested. 
 
 ### Linux
 Requires **GTK 4.10+, libadwaita 1.4+, libdbus-1** already on the system
