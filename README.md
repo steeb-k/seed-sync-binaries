@@ -3,12 +3,12 @@ Public **release artifacts** for **SEED Sync** — the Linux tarball, the
 macOS app bundle, and the Windows installer. This repo holds binaries only; the
 source lives in the source repo.
 
-## Install - Windows
+## Install/Update/Uninstall
+### Windows
 Download the `...-windows-x86_64.msi` asset from the latest release and run it
 (installs the service + Start-menu shortcut and registers a daily update task).
 
-## Install/Update/Uninstall - Linux & macOS
-
+### Linux/macOS
 Per-user, **no root**. One command — it detects your OS, installs, updates, or
 removes (and prompts for what to do if something's already there):
 
@@ -25,6 +25,10 @@ seed-sync --update          # check + apply a newer release (a daily timer does 
 seed-sync --status          # installed/latest version + daemon/agent state
 seed-sync --uninstall       # add --purge to also delete your app data
 ```
+
+## Other Requirements
+### Windows
+Requires **Windows 10 (64-bit)** or later.
 
 ### Linux
 Requires **GTK 4.10+, libadwaita 1.4+, libdbus-1** already on the system
