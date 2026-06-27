@@ -40,8 +40,8 @@ login), and enables a daily auto-update timer. Launch **S.E.E.D.** from your app
 menu. Data lives in `~/.local/share/seedsync`.
 
 ### macOS
-- **macOS 14 (Sonoma) or later**, **Apple Silicon and Intel** — the asset is a
-  **universal2** binary (one download runs natively on both).
+- **macOS 11 (Big Sur) or later**, **Apple Silicon and Intel** — the asset is a
+  **universal** binary (one download runs natively on both).
 - **Self-contained:** GTK4 + libadwaita and their dependencies are bundled in the
   app, so **no Homebrew or other runtime is required**.
 - **No Gatekeeper prompt, no notarization:** the app is ad-hoc signed, and fetching
