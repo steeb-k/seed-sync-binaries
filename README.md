@@ -1,7 +1,7 @@
 ![SEED Sync Header Image](seed-header.png)
 Public **release artifacts** for **SEED Sync** — the Linux tarball, the
 macOS app bundle, and the Windows installer. This repo holds binaries only; the
-source lives in the source repo.
+source can be found at [seed-sync](https://github.com/steeb-k/seed-sync).
 
 ## Install/Update/Uninstall
 ### Windows
