@@ -1,5 +1,5 @@
 #!/bin/sh
-# S.E.E.D. (Seed Sync) bootstrap — install, update, or remove in one command.
+# S.E.E.D. (SEED Sync) bootstrap — install, update, or remove in one command.
 #
 #   curl -fsSL https://steeb-k.github.io/seed-install.sh | sh
 #
@@ -78,7 +78,7 @@ fi
 ACTION="${1:-${SEED_ACTION:-}}"
 if [ -z "$ACTION" ]; then
   if (exec 3</dev/tty) 2>/dev/null; then
-    say "S.E.E.D. (Seed Sync)"
+    say "S.E.E.D. (SEED Sync)"
     if [ -n "$INSTALLED" ]; then
       say "  Installed: v$INSTALLED"
       say ""
@@ -109,12 +109,21 @@ case "$ACTION" in
   *) die "unknown action '$ACTION' (use install | update | remove)" ;;
 esac
 
-# Update/remove of an existing install: delegate to the installed wrapper, which
-# already knows how to download + version-check + swap (no work to duplicate here).
+# Existing install: prefer the installed wrapper's own paths, but do NOT delegate an
+# update BLINDLY. A broken updater (e.g. the `set -o pipefail` bug in <=0.6.3, where
+# `latest_version` returned non-zero and silently killed `--update`) would just re-run
+# its own breakage — and since this one-liner is the natural thing to reach for when an
+# install stops updating, `exec`-delegating to it left no way to recover. So try it,
+# and on failure fall through to the self-contained download+install below, which
+# replaces the wrapper itself and thereby repairs the updater. Remove has no such
+# failure mode, so it still delegates directly.
 if have seed-sync; then
   case "$ACTION" in
-    install_or_update) exec seed-sync --update ;;
-    remove)            exec seed-sync --uninstall ;;
+    remove) exec seed-sync --uninstall ;;
+    install_or_update)
+      if seed-sync --update; then exit 0; fi
+      say "the installed updater failed — repairing with a fresh install..."
+      ;;
   esac
 fi
 [ "$ACTION" = remove ] && die "S.E.E.D. is not installed"
